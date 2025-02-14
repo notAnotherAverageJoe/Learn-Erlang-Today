@@ -1,6 +1,10 @@
 -module(names).
--export([get_name/0]).
+-export([get_name/0, get_age/0, start/0]).
 -author("Joseph Skokan").
+
+start() ->
+    get_name(),
+    get_age().
 
 get_name() ->
     io:format("Enter your First Name: ~n"),
