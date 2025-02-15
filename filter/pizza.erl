@@ -27,7 +27,8 @@ pizza() ->
             Order
         )
     end,
-    FilterOrdersForChicken = fun(Order, CustomItem) ->
+    % allows custom orders
+    FilterOrdersForCustom = fun(Order, CustomItem) ->
         lists:filter(
             fun({Item, _Customer}) ->
                 Item == CustomItem
@@ -36,9 +37,9 @@ pizza() ->
         )
     end,
     io:format("Total Orders: ~p~n", [number_of_orders(Orders, 0)]),
-
     io:format("Pizza Orders: ~p~n", [FilterOrdersForPizza(Orders)]),
-    io:format("Chicken Orders: ~p~n", [FilterOrdersForChicken(Orders)]).
+    io:format("Chicken Orders: ~p~n", [FilterOrdersForChicken(Orders)]),
+    io:format("Turkey Orders: ~p~n", [FilterOrdersForCustom(Orders, turkey)]).
 
 number_of_orders([], Acc) -> Acc;
 number_of_orders([_Hd | Tl], Acc) -> number_of_orders(Tl, Acc + 1).
