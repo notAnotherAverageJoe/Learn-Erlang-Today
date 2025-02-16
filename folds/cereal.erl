@@ -1,0 +1,3 @@
+-module(cereal).
+-export([]).
+-author("Joe").
