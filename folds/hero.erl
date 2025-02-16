@@ -1,0 +1,2 @@
+-module(hero).
+-export([]).

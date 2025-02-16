@@ -5,17 +5,19 @@
 breakfast() ->
     Cereals = [
         {trix, 5.99, 2},
-        {raisin, 5.99, 2},
-        {pebbles, 5.99, 2},
-        {cocopuffs, 5.99, 2},
-        {luckycharms, 5.99, 2},
-        {frostedwheaties, 5.99, 2}
+        {raisin, 4.73, 2},
+        {pebbles, 7.99, 2},
+        {cocopuffs, 6.99, 2},
+        {luckycharms, 5.35, 2},
+        {frostedwheaties, 8.78, 2}
     ],
 
-    lists:foldl(
+    Total = lists:foldl(
         fun({_Cereal, Price, Quantity}, Sum) ->
             (Price * Quantity) + Sum
         end,
         0,
         Cereals
-    ).
+    ),
+
+    io:format("Total cost: ~.2f~n", [Total]).
