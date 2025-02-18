@@ -1,5 +1,5 @@
 -module(heroes).
--export([start/0]).
+-export([start/0, hero_status/1]).
 
 start() ->
     HeroPid = start_adventurer(),
@@ -10,9 +10,9 @@ start_adventurer() ->
 
 loop(Pid) ->
     io:format(
-        "Choose an action~n1. Train strength~n2.Train Magic~n3.Train Stamina~n or 'q' to quit"
+        "Choose an action~n1.Train strength~n2.Train Magic~n3.Train Stamina~n or 'q' to quit"
     ),
-    Choice = string:trim(io:get_line()),
+    Choice = string:trim(io:get_line("> ")),
     case Choice of
         "q" ->
             io:format("Goodbye!~n");
@@ -40,4 +40,20 @@ loop(Pid) ->
         _ ->
             io:format("Invalid option try again~n"),
             loop(Pid)
+    end.
+
+hero_status({Strength, Magic, Stamina}) ->
+    receive
+        {strength_training, Amount, From} ->
+            NewStrength = (Amount + Strength),
+            From ! {up_strength, NewStrength},
+            hero_status({NewStrength, Magic, Stamina});
+        {magic_training, Amount, From} ->
+            NewMagic = (Amount + Magic),
+            From ! {up_magic, NewMagic},
+            hero_status({Strength, NewMagic, Stamina});
+        {stamina_training, Amount, From} ->
+            NewStamina = (Amount + Stamina),
+            From ! {up_stamina, NewStamina},
+            hero_status({Strength, Magic, NewStamina})
     end.
