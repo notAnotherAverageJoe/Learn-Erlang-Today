@@ -1,5 +1,9 @@
 -module(heroes).
--export([]).
+-export([start/0]).
+
+start() ->
+    HeroPid = start_adventurer(),
+    loop(HeroPid).
 
 start_adventurer() ->
     spawn(?MODULE, hero_status, [{10, 10, 10}]).
