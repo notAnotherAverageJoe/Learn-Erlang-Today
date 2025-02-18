@@ -9,6 +9,7 @@ adventure() ->
         {enemy3, 70, 1},
         {enemy4, 80, 1}
     ],
+    io:format("Hero's Power -> ~p~n", [Hero]),
 
     HeroLevel = lists:foldl(
         fun({_Name, Level, Amount}, Power) ->
