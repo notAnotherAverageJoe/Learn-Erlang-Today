@@ -41,6 +41,7 @@ loop(Pid) ->
             loop(Pid)
     end.
 
+% The pid is always listening
 hero_status({Health, Stamina, Mana}) ->
     receive
         {damage, Amount, From} ->
