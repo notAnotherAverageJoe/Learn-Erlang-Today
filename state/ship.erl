@@ -11,4 +11,9 @@ loop(Pid)->
     Choice = string:trim(io:get_line("-> ")),
     case Choice of
         "1"->
-            Pid ! {haul, }
+            Pid ! {haul, 40, self()},
+            receive
+                {ok_haul, NewGas, NewWallet} ->
+                    io:stream("Current Gas: ~p~pCurrent Cash: ~p~n",[NewGas,NewWallet] )
+                end,
+            loop(Pid);
