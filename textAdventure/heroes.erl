@@ -4,7 +4,7 @@
 start() ->
     HeroPid = start_adventurer(),
     loop(HeroPid).
-
+% starting hero with 10 hp 10 magic and 10 stamina
 start_adventurer() ->
     spawn(?MODULE, hero_status, [{10, 10, 10}]).
 
