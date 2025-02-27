@@ -14,34 +14,28 @@ loop() ->
         account_issue ->
             io:format("Help with account issues coming up!~n"),
             spaces(),
-            % Continue loop
             loop();
         password_reset ->
             io:format("Password reset process initiated.~n"),
             spaces(),
-            % Continue loop
             loop();
         username_change ->
             io:format("Changing your username is simple!~n"),
             spaces(),
-            % Continue loop
             loop();
         system_error ->
             io:format("It looks like you're experiencing a system error.~n"),
             spaces(),
-            % Continue loop
             loop();
         human_assistance ->
             io:format("Would you like a human agent to assist you further? (yes/no)~n"),
             spaces(),
-            % Continue loop
             loop();
         exit ->
             io:format("Goodbye!~n"),
             ok;
         unknown ->
             io:format("I didn't understand that, please try again.~n"),
-            % Continue loop
             loop()
     end.
 
