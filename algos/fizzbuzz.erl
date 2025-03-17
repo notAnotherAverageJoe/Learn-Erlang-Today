@@ -1,9 +1,10 @@
 -module(fizzbuzz).
 -export([fizz/1, fizzbuzz/1]).
-
+% main function calling helper
 fizzbuzz(N) when N > 0 ->
     lists:foreach(fun fizz/1, lists:seq(1, N)).
 
+% helper function
 fizz(N) ->
     case {N rem 3, N rem 5} of
         {0, 0} -> io:format("FizzBuzz~n");
