@@ -7,4 +7,6 @@
 %% Function to create and display a person record
 create_person() ->
     P = #person{name = "Alice", age = 30, city = "New York"},
-    io:format("Person: ~p~n", [P]).
+    J = #person{name = "Joe", age = 33, city = "Texas"},
+    io:format("Person: ~p~n", [P]),
+    io:format("Person: ~p~n", [J]).

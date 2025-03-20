@@ -4,7 +4,7 @@
 -record(hero, {name = "Unknown", age = 0, class = "Unknown"}).
 
 hero_creation() ->
-    H = #hero{name = "Rhogan", age = 55, class = "Warrior"},
-    io:format("Hero Status: ~nName:~p~nAge: ~p~nClass: ~p~n", [
+    H = #hero{name = "Rhorg", age = 43, class = "Warrior"},
+    io:format("Hero Status: ~nName: ~s~nAge: ~p~nClass: ~s~n", [
         H#hero.name, H#hero.age, H#hero.class
     ]).
